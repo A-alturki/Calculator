@@ -4,11 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Calculator</title>
 </head>
 <body>
     
+    <div class="calc">
+
+        <div class="display">0</div>
+
+        <div class="buttons">
+            <div class="row special-row">
+                <button onclick="depopulate()" >AC</button>
+                <button onclick="remove()">Delete</button>
+            </div>
+
+            <div class="row">
+                <button onclick="populate(this)">7</button>
+                <button onclick="populate(this)">8</button>
+                <button onclick="populate(this)">9</button>
+                <button>*</button>
+            </div>
+            <div class="row">
+                <button onclick="populate(this)">4</button>
+                <button onclick="populate(this)">5</button>
+                <button onclick="populate(this)">6</button>
+                <button>-</button>
+            </div>
+
+            <div class="row">
+                <button onclick="populate(this)">1</button>
+                <button onclick="populate(this)">2</button>
+                <button onclick="populate(this)">3</button>
+                <button>+</button>
+            </div>
+            
+
+            <div class="row">
+                <button onclick="populate(this)">0</button>
+                <button onclick="populate(this)">.</button>
+                <button>=</button>
+                <button>/</button>
+            </div>
+            
+        </div>
+
+    </div>
 
     
+    <script src="js.js"></script>
 </body>
 </html>
