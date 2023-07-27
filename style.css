@@ -37,7 +37,9 @@ button{
     align-items: center;
 }
 
-
+.operator-hover{
+    background-color: red;
+}
 
 .button-49,
 .button-49:after {
