@@ -22,7 +22,7 @@ const display = document.querySelector('.display');
 let operatorHover = false;
 let operatorHoverobj = null;
 let operationDone = false;
-
+let pressedEqual = false;
 
 function operate(n1, n2, operator){
     operationDone = true;
@@ -43,8 +43,6 @@ function operate(n1, n2, operator){
 
 
 function populate(e){
-    
-
     if(displayValue.toString().includes(".") && e.textContent == "."){
         return;
     }
@@ -63,6 +61,9 @@ function populate(e){
 }
 
 function depopulate(){
+    if(operatorHoverobj){
+        operatorHoverobj.classList.remove("operator-hover");
+    }
     operatorHover = false;
     operatorHoverobj = null;
     operationDone = false;
@@ -72,20 +73,29 @@ function depopulate(){
     operator = "";
     display.textContent = displayValue;
     
+    
 }
 
 function remove(){
-    if(operatorHoverobj){
-        operatorHoverobj.classList.remove("operator-hover");
+    if(!operatorHover){
+        let gru = displayValue.toString();
+        displayValue = Number(gru.slice(0,gru.length-1));
+        display.textContent = displayValue;
     }
-    let gru = displayValue.toString();
-    displayValue = Number(gru.slice(0,gru.length-1));
-    display.textContent = displayValue;
+    
+    
 }
 
 
 function op(e){
-    num1 = displayValue;
+    if(!pressedEqual){
+        equal();
+    }
+    pressedEqual = false;
+    if(displayValue != 0){
+        num1 = displayValue;
+    }
+    displayValue = 0;
     operator = e.textContent;
 
     operatorHover = true;
@@ -97,6 +107,11 @@ function op(e){
 }
 
 function equal(){
-    displayValue = operate(num1,displayValue, operator);
-    display.textContent = displayValue;
+    if(displayValue != 0 && num1 != 0 && operator !== ""){
+        displayValue = operate(num1,displayValue, operator);
+        display.textContent = displayValue;
+        pressedEqual = true;
+        num1 = 0;
+    }
+    
 }
