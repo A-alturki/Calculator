@@ -88,6 +88,7 @@ function remove(){
 
 
 function op(e){
+    negation(e);
     if(!pressedEqual){
         equal();
     }
@@ -109,9 +110,19 @@ function op(e){
 function equal(){
     if(displayValue != 0 && num1 != 0 && operator !== ""){
         displayValue = operate(num1,displayValue, operator);
+        displayValue = Math.round((displayValue + Number.EPSILON) * 100000) / 100000
         display.textContent = displayValue;
         pressedEqual = true;
         num1 = 0;
     }
-    
+}
+
+function negation(e){
+    if(e.textContent == "-" && displayValue == 0 && !displayValue.toString().includes("-")){
+        displayValue = "-";
+        display.textContent = displayValue;
+    }
+    else if (e.textContent == "-" && displayValue == 0 && displayValue.toString().includes("-")){
+        displayValue = 0;
+    }
 }
