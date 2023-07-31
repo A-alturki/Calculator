@@ -88,7 +88,6 @@ function remove(){
 
 
 function op(e){
-    negation(e);
     if(!pressedEqual){
         equal();
     }
@@ -114,15 +113,5 @@ function equal(){
         display.textContent = displayValue;
         pressedEqual = true;
         num1 = 0;
-    }
-}
-
-function negation(e){
-    if(e.textContent == "-" && displayValue == 0 && !displayValue.toString().includes("-")){
-        displayValue = "-";
-        display.textContent = displayValue;
-    }
-    else if (e.textContent == "-" && displayValue == 0 && displayValue.toString().includes("-")){
-        displayValue = 0;
     }
 }
